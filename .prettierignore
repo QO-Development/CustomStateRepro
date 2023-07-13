@@ -1,0 +1,12 @@
+.husky
+.vscode
+node_modules
+public
+.next
+.gitignore
+next-env.d.ts
+next.config.js 
+package-lock.json 
+package.json
+README.md 
+tsconfig.json

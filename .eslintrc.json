@@ -1,0 +1,16 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:cypress/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["react-hooks", "jest", "cypress", "@typescript-eslint"],
+  "rules": {
+    "react-hooks/exhaustive-deps": "error",
+    "no-console": "error"
+  }
+}

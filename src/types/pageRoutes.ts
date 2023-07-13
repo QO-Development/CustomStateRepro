@@ -1,0 +1,15 @@
+export enum PageRoute {
+  Home = "/",
+  SignUp = "/signup",
+  SignIn = "/signin",
+  Dashboard = "/",
+  Datasets = "/datasets",
+  Collections = "/collections",
+  Executors = "/executors",
+  Settings = "/settings",
+  Documentation = "/docs",
+  Profile = "/profile",
+  Notifications = "/notifications",
+  NewDataset = "/newdataset",
+  Invite = "/invites",
+}
