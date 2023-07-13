@@ -2,8 +2,7 @@ import { RobotoTypography } from "@/components"
 import { RobotoLogo } from "@/components"
 import { LoggerService } from "@/service"
 import { GetOrganizationsResponse } from "@/service/apiService"
-import { APIService } from "@/service/apiService"
-import { PageRoute, RobotoAPICall, usersOrgsEndpoint } from "@/types"
+import { PageRoute } from "@/types"
 import { CircularProgress } from "@mui/material"
 import { useTheme } from "@mui/material"
 import { useRouter } from "next/router"
@@ -30,46 +29,26 @@ export const LoadOauthForm: React.FC<SignInFormProps> = ({
   const [errMsg, setErrMsg] = useState<string | null>(null)
 
   useEffect(() => {
-    const getOrgs = async () => {
-      const apiCall: RobotoAPICall = {
-        endpoint: usersOrgsEndpoint,
-        method: "GET",
-      }
+    let inviteId = null
 
-      const { response, error } = await APIService.authorizedRequest(apiCall)
+    if (router.query.state) {
+      try {
+        inviteId = router.query.state as string
+        inviteId = inviteId.split("-")[1] as string
 
-      if (error) {
-        setErrMsg(error.message)
-        return
-      }
-
-      let inviteId = null
-
-      if (router.query.state) {
-        try {
-          inviteId = router.query.state as string
-          inviteId = inviteId.split("-")[1] as string
-
-          if (!inviteId) {
-            // no custom state has been passed, no need to parse
-            loadOrgsSuccess(response as GetOrganizationsResponse, null)
-            return
-          }
-
-          inviteId = Buffer.from(inviteId, "hex").toString("utf8") as string
-          inviteId = JSON.parse(inviteId).inviteId as string
-        } catch (e) {
-          LoggerService.log(e)
-          setErrMsg("Invalid invite link")
+        if (!inviteId) {
+          // no custom state has been passed, no need to parse
           return
         }
+
+        inviteId = Buffer.from(inviteId, "hex").toString("utf8") as string
+
+        LoggerService.log("Custom state parsed from URL: ", inviteId)
+      } catch (e) {
+        LoggerService.log(e)
+        setErrMsg("Invalid invite link")
+        return
       }
-
-      loadOrgsSuccess(response as GetOrganizationsResponse, inviteId)
-    }
-
-    if (isVisible) {
-      getOrgs()
     }
   }, [isVisible, loadOrgsSuccess, router.query.state])
 

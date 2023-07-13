@@ -101,7 +101,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       switch (authListener.payload.event) {
         case "customOAuthState": {
           LoggerService.log("custom state returned from CognitoHosted UI")
+          console.log("CUSTOM STATE SHOULD BE HAPPENING ")
+          console.log("CUSTOM STATE SHOULD BE HAPPENING ")
+          console.log("CUSTOM STATE SHOULD BE HAPPENING ")
+          console.log("CUSTOM STATE SHOULD BE HAPPENING ")
+          console.log("CUSTOM STATE SHOULD BE HAPPENING ")
           LoggerService.log(authListener.payload.data)
+
           break
         }
         case "customState_failure":
