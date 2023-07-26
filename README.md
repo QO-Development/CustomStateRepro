@@ -5,19 +5,7 @@ NOTE: If you're running VSCode and have the JavaScript Debugger Companion Extens
 ## Getting up and running 
 
 1. npm install 
-2. Add a '.env' file to the frontend-service directory. The .env file needs the following variables: 
-```
-NEXT_PUBLIC_REACT_APP_ENV="dev"
-NEXT_PUBLIC_REACT_APP_MIXPANEL_TOKEN="3f88b9c6bcee841dde5fa23120ba6d7e"
-NEXT_PUBLIC_AWS_COGNITO_REGION="us-west-2"
-NEXT_PUBLIC_AWS_USER_POOLS_ID=<sandbox-user-pool-id-here>
-NEXT_PUBLIC_AWS_USER_POOLS_WEB_CLIENT_ID=<web-client-id-here>
-NEXT_PUBLIC_API_URL="https://jh.api-dev.roboto.ai" //replace with your sandbox url 
-CYPRESS_BASE_URL="http://localhost:3000"
-NEXT_PUBLIC_OAUTH_REDIRECT_SIGN_IN="http://localhost:3000/signin?oauth=true"
-NEXT_PUBLIC_OAUTH_REDIRECT_SIGN_OUT="http://localhost:3000/signin"
-NEXT_PUBLIC_OAUTH_COGNITO_DOMAIN="roboto-managed-jh.auth.us-west-2.amazoncognito.com" //replace with your cognito domain
-```
+2. Add a '.env' file to the frontend-service directory.
 3. npm run dev (or use VSCode and use the provided debug configuration. Just press play!)
 
 At this point your local frontend-service should be up and running on http://localhost:3000. Deploying the API to your sandbox environment is out of scope for this document, please check the API service docs for instructions on how to do that. 
